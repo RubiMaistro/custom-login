@@ -1,19 +1,26 @@
 import React, {useState} from 'react';
 import './App.css';
 import { Login } from "./pages/Login";
-import { Home } from "./pages/Home"
+import { Home } from "./pages/Home";
+import { DataList } from "./pages/DataList";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('login');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const togglePage = (pageName) => {
-    setCurrentPage(pageName);
-    console.log(pageName);
+  const setCredentials = (email, password) => {
+    setEmail(email);
+    setPassword(password);
   }
+
+  const checkCredentials = (email, password) => {
+    return false;
+  }
+
   return (
     <div className="App">
       {
-        currentPage === "login" ? <Login onPageSwitch={togglePage} /> : <Home onPageSwitch={togglePage} />
+        checkCredentials(email, password) ? <Login onPageSwitch={setCredentials} /> : <DataList />
       }
     </div>
   );

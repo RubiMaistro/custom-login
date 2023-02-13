@@ -41,7 +41,7 @@ export const Login = (props) => {
                 <span>Forget password?</span>
               </div>
             </div>
-            <button className="submit-btn" onClick={() => props.onPageSwitch('home')}>Login</button>
+            <button className="submit-btn" onClick={() => props.onPageSwitch(email, password)}>Login</button>
           </form>
           <div className="register">
             <div className="text">
@@ -60,3 +60,5 @@ export const Login = (props) => {
     </div>
   )
 }
+
+export default Login;

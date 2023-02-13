@@ -5,6 +5,8 @@
   background-color: #add8e690;
 }
 
+/* Login Design */
+
 .inner-container {
   display: flex;
   flex-flow: row wrap;
@@ -37,4 +39,23 @@
 .background img {
   max-height: 100vh;
   object-fit: cover;
+}
+
+/* DataList Design */
+
+table {
+  background-color: #fff;
+}
+
+th { 
+  text-transform: uppercase;
+}
+
+tr td {
+  padding: 0 .5em;
+}
+
+tbody tr:hover {
+  color: slateblue;
+  cursor: pointer;
 }
