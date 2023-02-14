@@ -1,12 +1,13 @@
 import React from "react";
 
-export const Home = () => {
+export const Home = ({email, password}) => {
 
-    return (
-        <div>
-            <button>Vissza</button>
-        </div>
-    )
+  return (
+    <div className="home">
+      <p>Email: {email}</p>
+      <p>Password: {password}</p>
+    </div>
+  )
 }
 
 export default Home;

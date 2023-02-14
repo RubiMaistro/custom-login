@@ -1,4 +1,8 @@
 import React, {useState} from "react";
+import { GoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 export const Login = (props) => {
   const [email, SetEmail] = useState('');
@@ -7,6 +11,17 @@ export const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   }
+
+  const loginWithGoogle = useGoogleLogin({
+    onSuccess: async response => {
+      const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: {
+          "Authorization": "Bearer " + response.access_token
+        }
+      })
+      props.setCredentials(res.data.email, res.data.password);
+    }
+  });
 
   return (
     <div className="inner-container">
@@ -20,7 +35,9 @@ export const Login = (props) => {
               <div className="subtitle">See your growth and get consulting support!</div>
           </div>
           <div className="google-auth-container">
-              <button>Sign in with Google</button>
+              <button onClick={loginWithGoogle}>
+                Sign in with Google
+              </button>
               <div className="separator">or Sign in with Email</div>
           </div>
           <form className="login-form" onSubmit={handleSubmit}>
@@ -41,7 +58,7 @@ export const Login = (props) => {
                 <span>Forget password?</span>
               </div>
             </div>
-            <button className="submit-btn" onClick={() => props.onPageSwitch(email, password)}>Login</button>
+            <button className="submit-btn" onClick={() => props.setCredentials(email, password)}>Login</button>
           </form>
           <div className="register">
             <div className="text">
