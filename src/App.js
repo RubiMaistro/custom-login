@@ -14,7 +14,7 @@ function App() {
   }
 
   const checkCredentials = (email, password) => {
-    return false;
+    return true;
   }
 
   return (

@@ -20,7 +20,7 @@ export const Login = (props) => {
               <div className="subtitle">See your growth and get consulting support!</div>
           </div>
           <div className="google-auth-container">
-              <button>Sign in with Google SECTION</button>
+              <button>Sign in with Google</button>
               <div className="separator">or Sign in with Email</div>
           </div>
           <form className="login-form" onSubmit={handleSubmit}>
@@ -54,7 +54,7 @@ export const Login = (props) => {
           </div>
         </div>
       </div>
-      <div className="background">
+      <div className="inner-background">
         <img src="/images/syncee_frontend_test_wallpaper.png" />
       </div>
     </div>
